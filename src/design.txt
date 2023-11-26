@@ -1,0 +1,30 @@
+------------class variable------------
+1.int baseSwordDmg เป็นตัวแปรไว้ใช้เก็บค่าเริ่มต้นของพลังโจมตีของดาบ
+2.int baseShieldDef เป็นตัวแปรไว้เก็บค่าเริ่มต้นพลังป้องกันของโล่
+3.int baseSPD เป็นตัวแปรไว้เก็บค่าความเร็วเริ่มต้นของตัวละคร
+------------instance variable------------
+1.String name เก็บชื่อตัวละคร
+2.int level เก็บเลเวลตัวละคร
+3.double maxHP เก็บค่าพลังชีวิตมากสุดของตัวละคร
+4.double currentHP เก็บค่าพลังชีวิตในปัจจุบันของตัวละคร
+5.double maxMana เก็บค่าพลังมานาสูงสุดของตัวละคร
+6.double currentMana เก็บค่าพลัมานาปัจจุบันของตัวละคร
+7.double maxSPD เก็บค่าความเร็วสูงสุดของตัวละคร
+8.double currentSPD ก็ฐค่าความเร็วปัจจุบันของตัวละคร
+9.isSwordEquip เก็บค่าว่าติดตั้งดาบหรือไม่
+10.isShieldEquip เก็บค่าว่าติดตั้งโล่หรือไม่
+11.swordLevel เก็บค่าเลเวลของดาบ
+12.shieldLevel เก็บค่เลเวลของโล่
+isUnconscious เก็บค่าว่าตัวละครนี้หมดสติหรือไม่
+------------instance methods------------
+1.updateStatus ใช้สำหรับอัพเดตค่าสถานะตัวละครเมื่อตัวละครเลเวลอัพ
+2.characterLevelAscending เป็น method ใช้เมื่อตัวละครมีการพัฒนาเลเวล
+3.swordEquip เป็น method ใช้เมื่อมีการติดตั้งอุปกรณ์ดาบ
+4.shieldEquip เป็น method ใช้เมื่อมีการติดตั้งอุปกรณ์โล่
+5.swordUnEquip เป็น method ใช้เมื่อมีการตถอดอุปกรณ์ดาบ
+6.shieldUnEquip เป็น method ใช้เมื่อมีการตถอดอุปกรณ์โล่
+7.swordLevelAscending เป็น method ใช้เมื่อดาบมีการพัฒนาเลเวล
+8.shieldLevelAscending เป็น method ใช้เมื่อโล่มีการพัฒนาเลเวล
+9.wasAttacked เป็น method ที่เมื่อถูกโจมตีจะรับค่า damage ที่ศัตรูทำมาลดเลือดตัวละครโดยคำนึงถึงค่าป้องกัน
+10.attack เป็น method ที่ใช้เมื่อโจมตีศัตรู
+11.healthPack เป็น method ที่ใช้เมื่อฮีลตัวเอง
