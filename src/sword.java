@@ -1,14 +1,21 @@
 public class sword {
     private String name;
-    double atk;
+    private double atk;
     private int level = 1;
     private int currentExp;
     private int maxExp;
-    double decreaseSPD;
+    private double decreaseSPD;
     sword(String name,int atk){
         this.name = name;
         this.atk = atk;
         this.decreaseSPD = 0.1+0.04*level;
+    }
+
+    public double getAtk() {
+        return atk;
+    }
+    public double getDecreaseSPD(){
+        return decreaseSPD;
     }
     private void updateStatus(){
         atk = 1+0.1*level;

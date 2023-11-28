@@ -1,14 +1,20 @@
 public class shield {
     private String name;
-    double def;
+    private double def;
     private int level = 1;
     private int currentExp;
     private int maxExp;
-    double decreaseSPD;
+    private double decreaseSPD;
     shield(String name,int def){
         this.name = name;
         this.def = def;
         this.decreaseSPD = 0.1+0.08*level;
+    }
+    public double getDef() {
+        return def;
+    }
+    public double getDecreaseSPD(){
+        return decreaseSPD;
     }
     private void updateStatus(){
         def = 1+0.05*level;

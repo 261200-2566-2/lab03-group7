@@ -36,9 +36,9 @@ public class Character {
         maxSPD = baseSPD*(0.1+0.03*level);
     }
     private void updateEquipment(){
-        currentSPD = maxSPD - (sw.decreaseSPD*isSwordEquip+sh.decreaseSPD*isShieldEquip);
-        dmg = sw.atk*isSwordEquip;
-        def = sh.def*isShieldEquip;
+        currentSPD = maxSPD - (sw.getDecreaseSPD()*isSwordEquip+sh.getDecreaseSPD()*isShieldEquip);
+        dmg = sw.getAtk()*isSwordEquip;
+        def = sh.getDef()*isShieldEquip;
     }
     private void characterLevelAscending(){
         level++;
