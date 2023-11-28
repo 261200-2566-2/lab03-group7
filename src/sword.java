@@ -1,10 +1,11 @@
 public class sword {
     private String name;
-    private double atk;
     private int level = 1;
+    private double atk;
+    private double decreaseSPD;
     private int currentExp;
     private int maxExp;
-    private double decreaseSPD;
+
     sword(String name,int atk){
         this.name = name;
         this.atk = atk;

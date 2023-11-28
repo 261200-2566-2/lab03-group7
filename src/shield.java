@@ -1,10 +1,10 @@
 public class shield {
     private String name;
-    private double def;
     private int level = 1;
+    private double def;
+    private double decreaseSPD;
     private int currentExp;
     private int maxExp;
-    private double decreaseSPD;
     shield(String name,int def){
         this.name = name;
         this.def = def;

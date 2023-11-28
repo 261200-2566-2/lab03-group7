@@ -66,7 +66,7 @@ public class Character {
         sw.updateExp(exp);
         updateEquipment();
     }
-    public void shieldLevelAscending(int exp){
+    public void updateShieldLevel(int exp){
         sh.updateExp(exp);
         updateEquipment();
     }
