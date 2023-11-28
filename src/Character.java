@@ -1,6 +1,4 @@
 public class Character {
-    private static int baseSwordDmg;
-    private static int baseShieldDef;
     private static double baseSPD;
     private String name;
     private int level = 1;
@@ -9,11 +7,12 @@ public class Character {
     private double currentHP ;
     private double maxMana;
     private double currentMana;
-    private double SPD;
+    private double maxSPD;
+    private double currentSPD;
+    private sword sw;
+    private shield sh;
     private int isSwordEquip = 0;
     private int isShieldEquip = 0;
-    private int swordLevel =1;
-    private int shieldLevel =1;
     private double dmg;
     private double def;
     private boolean isUnconscious;
@@ -27,52 +26,49 @@ public class Character {
         maxMana = 50+(2*level);
         currentMana = maxMana;
         baseSPD = 10;
-        SPD = baseSPD*(0.1+0.03*level);
-        baseSwordDmg = 10;
-        baseShieldDef = 10;
+        maxSPD = baseSPD*(0.1+0.03*level);
         isUnconscious = false;
     }
     private void updateStatus(){
         maxHP = 100+(10*level);
         maxMana = 50+(2*level);
         maxExp = 100*level;
-        SPD = (baseSPD*(0.1+0.03*level))- (isSwordEquip*baseSPD*(0.1+0.04*swordLevel)) - (isShieldEquip*baseSPD*(0.1+0.08*level));
-        dmg = isSwordEquip*baseSwordDmg*(1+0.1*swordLevel);
-        def = isShieldEquip*baseShieldDef*(1+0.05*shieldLevel);
+        maxSPD = baseSPD*(0.1+0.03*level);
+    }
+    private void updateEquipment(){
+        currentSPD = maxSPD - (sw.decreaseSPD*isSwordEquip+sh.decreaseSPD*isShieldEquip);
+        dmg = sw.atk*isSwordEquip;
+        def = sh.def*isShieldEquip;
     }
     private void characterLevelAscending(){
         level++;
         updateStatus();
     }
-    public void swordEquip(){
+    public void swordEquip(sword s){
+        this.sw = s;
         isSwordEquip = 1;
-        updateStatus();
+        updateEquipment();
     }
-    public void shieldEquip(){
+    public void shieldEquip(shield s){
+        this.sh = s;
         isShieldEquip = 1;
-        updateStatus();
+        updateEquipment();
     }
     public void swordUnEquip(){
         isSwordEquip = 0;
-        updateStatus();
+        updateEquipment();
     }
     public void shieldUnEquip(){
         isShieldEquip = 0;
-        updateStatus();
+        updateEquipment();
     }
-    public void swordLevelAscending(){
-        if(isSwordEquip == 1){
-            swordLevel++;
-            updateStatus();
-        }
-        else System.out.println("You didn't equip your sword yet");
+    public void updateSwordLevel(int exp){
+        sw.updateExp(exp);
+        updateEquipment();
     }
-    public void shieldLevelAscending(){
-        if(isShieldEquip == 1){
-            shieldLevel++;
-            updateStatus();
-        }
-        else System.out.println("You didn't equip your shield yet");
+    public void shieldLevelAscending(int exp){
+        sh.updateExp(exp);
+        updateEquipment();
     }
     public double wasAttacked(double damage){
         double damageTaken = damage - isShieldEquip*def ;
@@ -115,9 +111,9 @@ public class Character {
         System.out.println("Level : "+this.level + "exp" + currentExp + " / " + maxExp);
         System.out.println("HP : " + currentHP + " / " + maxHP);
         System.out.println("mana : " + currentMana + " / " + maxMana);
-        System.out.println("speed : " + this.SPD);
-        if(isSwordEquip == 1) System.out.println("sword level : " + swordLevel);
-        if(isShieldEquip == 1) System.out.println("shield level : " + shieldLevel);
+        System.out.println("speed : " + this.currentSPD);
+        if(isSwordEquip == 1)sw.showStatus();
+        if(isShieldEquip == 1)sh.showStatus();
     }
     public void updateExp(int exp){
         this.currentExp += exp;
